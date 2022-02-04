@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPiece">
+
+    <Button
+        android:id="@+id/newPiece"
+        android:layout_width="263dp"
+        android:layout_height="83dp"
+        android:onClick="ClickAddPiece"
+        android:text="Créer la pièce"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerImage" />
+
+    <EditText
+        android:id="@+id/nomPiece4"
+        android:layout_width="268dp"
+        android:layout_height="88dp"
+        android:ems="10"
+        android:hint="Nom de la pièce"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextPiece" />
+
+    <TextView
+        android:id="@+id/TextPiece"
+        android:layout_width="308dp"
+        android:layout_height="67dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Nouvelle Pièce"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/nomPiece4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerImage"
+        android:layout_width="307dp"
+        android:layout_height="67dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/newPiece"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomPiece4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
