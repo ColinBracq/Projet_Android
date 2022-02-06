@@ -1,5 +1,6 @@
 package com.bracq.projet_android;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ public class SpinnerAdapter extends ArrayAdapter<Image> {
         super(context, resource, objects);
         this.context = context;
         this.images = objects;
-        this.resources = resources;
+        this.resources = resource;
     }
 
     //this will return the ListView Item as a View
@@ -37,7 +40,7 @@ public class SpinnerAdapter extends ArrayAdapter<Image> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         //getting the view
-        View view = layoutInflater.inflate(resources, null, false);
+        @SuppressLint("ViewHolder") View view = layoutInflater.inflate(resources, null, false);
 
         //getting the view elements of the list from the view
         ImageView imageView = view.findViewById(R.id.imageViewSpinner);
@@ -46,13 +49,7 @@ public class SpinnerAdapter extends ArrayAdapter<Image> {
         Image image = images.get(position);
 
         //adding values to the list item
-        Bitmap bmp = null;
-        try {
-            bmp = BitmapFactory.decodeStream(new java.net.URL(image.getUrl()).openConnection().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        imageView.setImageBitmap(bmp);
+        Picasso.get().load("https://myhouse.lesmoulinsdudev.com/" + image.getUrl()).into(imageView);
         //finally returning the view
         return view;
     }

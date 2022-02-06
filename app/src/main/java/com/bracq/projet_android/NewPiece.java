@@ -61,7 +61,7 @@ public class NewPiece extends AppCompatActivity {
         AndroidNetworking.post("https://myhouse.lesmoulinsdudev.com/room-create")
                 .addHeaders("Authorization","Bearer "+token)
                 .addBodyParameter("name", nomP )
-                .addBodyParameter("idPicture", String.valueOf(idPicture)) // Erreur possible passage string au lieu de int
+                .addBodyParameter("idPicture", ""+idPicture) // Erreur possible passage string au lieu de int
 
                 .build()
 

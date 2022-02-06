@@ -15,8 +15,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class PieceAdapter extends ArrayAdapter<Piece> {
 
@@ -24,8 +27,8 @@ public class PieceAdapter extends ArrayAdapter<Piece> {
     Context context;
     int resources;
 
-    public PieceAdapter(Context context, int resource, ArrayList<Piece> objects) {
-        super(context, resource, objects);
+    public PieceAdapter(Context context, int resources, ArrayList<Piece> objects) {
+        super(context, resources, objects);
         this.context = context;
         this.pieces = objects;
         this.resources = resources;
@@ -41,7 +44,7 @@ public class PieceAdapter extends ArrayAdapter<Piece> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         //getting the view
-        View view = layoutInflater.inflate(resources, null, false);
+        @SuppressLint("ViewHolder") View view = layoutInflater.inflate(resources, null, false);
 
         //getting the view elements of the list from the view
         ImageView imageView = view.findViewById(R.id.iconPiece);
@@ -53,14 +56,9 @@ public class PieceAdapter extends ArrayAdapter<Piece> {
 
         //adding values to the list item
         textName.setText(piece.getName());
-        textId.setText(piece.getId());
-        Bitmap bmp = null;
-        try {
-            bmp = BitmapFactory.decodeStream(new java.net.URL(piece.getUrl()).openConnection().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        imageView.setImageBitmap(bmp);
+        textId.setText(String.valueOf(piece.getId()));
+
+        Picasso.get().load("https://myhouse.lesmoulinsdudev.com/" + piece.getUrl()).into(imageView);
         //finally returning the view
         return view;
     }
