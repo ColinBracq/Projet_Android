@@ -1,1 +1,1 @@
-Projet_Android
+Projet Android de Colin Bracq et Loïc Bracquemond
